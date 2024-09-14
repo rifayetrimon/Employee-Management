@@ -1,5 +1,35 @@
 {% extends "common/base.html" %}
 
 {% block content %}
-<h1>Home Page</h1>
+    <h2 class="text-2xl font-bold mb-4 text-center">Employee List</h2>
+    <table class="table-auto w-full mt-4 border-collapse border border-gray-200">
+        <thead>
+            <tr class="bg-gray-100">
+                <th class="border px-4 py-2">Name</th>
+                <th class="border px-4 py-2">Designation</th>
+                <th class="border px-4 py-2">Description</th>
+                {% comment %} <th class="border px-4 py-2">Actions</th> {% endcomment %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for employee in employees %}
+            
+            <tr>
+                <td class="border px-4 py-2 text-blue-800"><a href="{% url 'details' employee.pk %}">{{ employee.name }}</a></td>     
+                <td class="border px-4 py-2">{{ employee.designation }}</td>
+                <td class="border px-4 py-2">{{ employee.description }}</td>
+                {% comment %} <td class="border px-4 py-2">
+                    <a href="{% url 'employee_edit' employee.pk %}" class="bg-yellow-500 text-white px-2 py-1 rounded">Edit</a>
+                    <a href="{% url 'employee_delete' employee.pk %}" class="bg-red-500 text-white px-2 py-1 rounded">Delete</a>
+                </td> {% endcomment %}
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="6" class="text-center py-4">No employees found.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 {% endblock %}
+
+

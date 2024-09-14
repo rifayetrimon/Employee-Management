@@ -22,7 +22,7 @@ class EmployeeForm(forms.ModelForm):
             }),
             'salary': forms.NumberInput(attrs={
                 'class': 'form-input mt-1 block w-full h-12 pl-4 pr-4 rounded-lg border border-gray-300',
-                'placeholder': 'Enter salary',
+                'placeholder': '$ Enter salary',
             }),
             'designation': forms.Select(attrs={
                 'class': 'border-gray-300 rounded-md p-2 w-full',
@@ -34,3 +34,11 @@ class EmployeeForm(forms.ModelForm):
                 'rows': 1,
             }),
         }
+
+    def __init__(self, *args, **kwargs):
+        is_update = kwargs.pop('is_update', False)
+        super(EmployeeForm, self).__init__(*args, **kwargs)
+
+        if is_update:
+            self.fields['salary'].widget.attrs['readonly'] = True
+            self.fields['designation'].widget.attrs['disabled'] = True
