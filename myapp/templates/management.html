@@ -19,7 +19,7 @@
                 <td class="border text-center px-2 py-3 w-60">
                     <div>
                         <a href="{% url 'update' employee.pk %}" class="bg-yellow-500 text-white px-5 py-2 rounded">Edit</a>
-                        <a href="" class="bg-red-500 text-white px-5 py-2 rounded">Delete</a>
+                        <a href="{% url 'delete' employee.pk %}" class="bg-red-500 text-white px-5 py-2 rounded">Delete</a>
                     </div>
                 </td>
             </tr>

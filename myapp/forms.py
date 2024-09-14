@@ -42,3 +42,6 @@ class EmployeeForm(forms.ModelForm):
         if is_update:
             self.fields['salary'].widget.attrs['readonly'] = True
             self.fields['designation'].widget.attrs['disabled'] = True
+
+
+

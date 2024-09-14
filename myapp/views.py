@@ -54,4 +54,11 @@ def update(request, pk):
 
 
 
+################## delete
+def delete(request, pk):
+    employee = Employee.objects.get(pk=pk)
+    employee.delete()
+    return redirect('management')
+    
+
 
